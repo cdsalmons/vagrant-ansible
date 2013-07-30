@@ -1,5 +1,8 @@
-source :rubygems
+source 'https://rubygems.org'
 gem 'vagrant'
+
+#ruby=2.0.0
+#ruby-gemset=vagrant-ansible
 
 group :test, :development do 
   gem 'rspec'
@@ -11,7 +14,7 @@ group :test, :development do
     gem 'hoe-git'
     gem 'hoe-gemspec'
     gem 'hoe-bundler'
-    gem 'ZenTest'
+    #gem 'ZenTest'
     #gem 'autotest-fsevent'
   end
 end
