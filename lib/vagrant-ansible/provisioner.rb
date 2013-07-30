@@ -13,6 +13,7 @@ module Vagrant
         attr_accessor :ask_sudo_pass
         attr_accessor :sudo
         attr_accessor :verbose
+        attr_accessor :very_verbose
 
         def initialize
           @options = []
@@ -84,7 +85,13 @@ module Vagrant
 
           options << "--ask-sudo-pass" if config.ask_sudo_pass
           options << "--sudo" if config.sudo
-          options << "--verbose" if config.verbose
+
+          if config.very_verbose
+            options << "-vvv"
+          elsif config.verbose
+            options << "-v"
+          end
+
           options = options + config.options unless config.options.empty?
 
           cmd = (%w(ansible-playbook) << options << config.playbook).flatten
